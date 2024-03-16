@@ -1,6 +1,6 @@
 class Solution {
   int removeDuplicates(List<int> nums) {
-    int pre = -1000000000,res = 0;
+    int pre = -100000,res = 0;
     bool cu = false;
     for(int i in nums){
       if(cu && pre==i)continue;
