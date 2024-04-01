@@ -1,3 +1,7 @@
 class Solution {
-  int lengthOfLastWord(String s) => s.split(" ").where((str) => str.trim().isNotEmpty).last.length;
+  int lengthOfLastWord(String s) {
+    s = s.trim();
+    int i =s.lastIndexOf(' ');
+    return (s.length-i-1).abs();
+  }
 }
