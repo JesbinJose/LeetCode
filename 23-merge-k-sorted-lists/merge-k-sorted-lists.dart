@@ -16,8 +16,7 @@ class Solution {
       for(int i=0;i<lists.length;i++) if((lists[index]?.val??0) > (lists[i]?.val??0)) index = i;
       temp?.next = lists[index];
       temp = temp?.next;
-      if(lists[index]?.next==null)lists.removeAt(index);
-      else lists[index] =lists[index]?.next;
+      lists[index]?.next==null ? lists.removeAt(index) : lists[index] = lists[index]?.next;
     }
     return res.next;
   }
