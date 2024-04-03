@@ -13,7 +13,7 @@ class Solution {
     lists.removeWhere((item) => item==null);
     while(lists.isNotEmpty){
       int index = 0;
-      for(var (i,v) in lists.indexed) if((lists[index]?.val??0) > (v?.val??0)) index = i;
+      for(int i=0;i<lists.length;i++) if((lists[index]?.val??0) > (lists[i]?.val??0)) index = i;
       temp?.next = lists[index];
       temp = temp?.next;
       if(lists[index]?.next==null)lists.removeAt(index);
