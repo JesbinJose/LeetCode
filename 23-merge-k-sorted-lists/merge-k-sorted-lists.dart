@@ -1,23 +1,28 @@
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *   int val;
- *   ListNode? next;
- *   ListNode([this.val = 0, this.next]);
- * }
- */
 class Solution {
   ListNode? mergeKLists(List<ListNode?> lists) {
-    ListNode? res = ListNode(0,null);
-    ListNode? temp = res;
-    lists.removeWhere((item) => item==null);
-    while(lists.isNotEmpty){
-      int index = 0;
-      for(int i=0;i<lists.length;i++) if((lists[index]?.val??0) > (lists[i]?.val??0)) index = i;
-      temp?.next = lists[index];
-      temp = temp?.next;
-      lists[index]?.next==null ? lists.removeAt(index) : lists[index] = lists[index]?.next;
+    ListNode? dummy = ListNode(0); 
+    ListNode? temp = dummy; 
+    lists.removeWhere((item) => item == null);
+    while (lists.isNotEmpty) {
+      int index = 0; 
+      int minValue = lists[0]!.val; 
+
+      for (int i = 1; i < lists.length; i++) {
+        if (lists[i]!.val < minValue) {
+          minValue = lists[i]!.val;
+          index = i;
+        }
+      }
+      temp!.next = lists[index];
+      temp = temp.next;
+
+      lists[index] = lists[index]!.next;
+
+      if (lists[index] == null) {
+        lists.removeAt(index);
+      }
     }
-    return res.next;
+
+    return dummy.next; 
   }
 }
