@@ -1,12 +1,9 @@
 class Solution {
   int maxDepth(String s) {
-    int maxDepthOFString=0;
-    int depth =0;
-    for(String i in s.split('')){
-      if(i=='(') depth++;
-      else if(i==')') depth--;
-      maxDepthOFString = max(maxDepthOFString,depth);
-    }
+    int maxDepthOFString = 0;
+    for(int i =0,depth =0;i<s.length;i++,maxDepthOFString = max(maxDepthOFString,depth))
+      if(s[i]=='(') depth++;
+      else if(s[i]==')') depth--;
     return maxDepthOFString;
   }
 }
