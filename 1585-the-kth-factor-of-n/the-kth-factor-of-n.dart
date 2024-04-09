@@ -1,10 +1,6 @@
 class Solution {
   int kthFactor(int n, int k) {
-    int i = 0;
-    while(i++<=n){
-      if(n%i==0) k--;
-      if(k==0) return i;
-    }
+    for(int i = 0;i++<=n;) if(n%i==0&&k--==1) return i;
     return -1;
   }
 }
