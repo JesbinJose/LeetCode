@@ -3,27 +3,30 @@ class Trie {
   
   void insert(String word) {
     TrieNode temp = root;
-    for (String w in word.split('')) {
-      if (temp.childrens[w] == null) temp.childrens[w] = TrieNode(w);
-      temp = temp.childrens[w]!;
+    for (int i=0;i<word.length;i++) {
+      final index = word.codeUnitAt(i)-97;
+      if (temp.childrens[index] == null) temp.childrens[index] = TrieNode(word[i]);
+      temp = temp.childrens[index]!;
     }
     temp.isWordEnd = true;
   }
   
   bool search(String word) {
     TrieNode? temp = root;
-    for (String w in word.split('')) {
-      if (temp == null || temp.childrens[w] == null) return false;
-      temp = temp.childrens[w]!;
+    for (int i=0;i<word.length;i++) {
+      final index = word.codeUnitAt(i)-97;
+      if (temp == null || temp.childrens[index] == null) return false;
+      temp = temp.childrens[index]!;
     }
     return temp != null && temp.isWordEnd;
   }
   
   bool startsWith(String prefix) {
     TrieNode? temp = root;
-    for (String w in prefix.split('')) {
-      if (temp == null || temp.childrens[w] == null) return false;
-      temp = temp.childrens[w];
+    for (int i=0;i<prefix.length;i++) {
+      final index = prefix.codeUnitAt(i)-97;
+      if (temp == null || temp.childrens[index] == null) return false;
+      temp = temp.childrens[index];
     }
     return true;
   }
@@ -32,6 +35,6 @@ class Trie {
 class TrieNode {
   final String char;
   bool isWordEnd;
-  final Map<String, TrieNode> childrens = {};
+  final List<TrieNode?> childrens = List.filled(26,null);
   TrieNode(this.char, [this.isWordEnd = false]);
 }
