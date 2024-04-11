@@ -11,7 +11,7 @@ class Solution {
       if (result.isEmpty && num[i] == '0') continue; // Skip leading zeros
       result += num[i];
     }
-    if(result.length - k <= 0)return '0';
+    if(result.length - k< 0 ) return '0';
     result = result.substring(0, result.length - k);
 
     return result.isEmpty ? '0' : result;
