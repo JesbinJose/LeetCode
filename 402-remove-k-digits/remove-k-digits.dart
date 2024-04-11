@@ -1,13 +1,19 @@
 class Solution {
   String removeKdigits(String num, int k) {
     String result = "";
-    for (int i = 0; i < num.length; result += num[i++]) {
+    int len = num.length;
+
+    for (int i = 0; i < len; i++) {
       while (k > 0 && result.isNotEmpty && result[result.length - 1].compareTo(num[i]) > 0) {
         result = result.substring(0, result.length - 1);
         k--;
       }
+      if (result.isEmpty && num[i] == '0') continue; // Skip leading zeros
+      result += num[i];
     }
-    result = result.substring(0, result.length - k).replaceAll(RegExp(r'^0+(?=.)'), '');
+    if(result.length - k <= 0)return '0';
+    result = result.substring(0, result.length - k);
+
     return result.isEmpty ? '0' : result;
   }
 }
