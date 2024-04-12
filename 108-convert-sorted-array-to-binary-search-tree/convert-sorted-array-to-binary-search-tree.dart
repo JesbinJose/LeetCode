@@ -1,7 +1,7 @@
 import 'dart:collection';
 class Solution {
   TreeNode? sortedArrayToBST(List<int> nums) {
-    Queue<List<dynamic>> queue = Queue();
+    Queue<List> queue = Queue();
     TreeNode? root;
     int left = 0;
     int right = nums.length - 1;
