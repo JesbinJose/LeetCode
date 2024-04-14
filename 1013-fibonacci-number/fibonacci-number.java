@@ -1,7 +1,13 @@
 class Solution {
+  private int[] memo;
   public int fib(int n) {
-    if(n==0) return 0;
-    if(n<3)return 1;
-    return fib(n-1)+fib(n-2);
+    memo = new int[n + 1];
+    return fibHelper(n);
+  }
+  private int fibHelper(int n) {
+    if (n < 2) return n;
+    if (memo[n] != 0) return memo[n];
+    memo[n] = fibHelper(n - 1) + fibHelper(n - 2);
+    return memo[n];
   }
 }
