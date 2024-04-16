@@ -1,11 +1,12 @@
 class Solution {
+  int sum = 0;
   TreeNode? bstToGst(TreeNode? root) {
-    helper(root,0);
+    if (root != null) {
+      bstToGst(root!.right);
+      sum += root!.val;
+      root!.val = sum;
+      bstToGst(root!.left);
+    }
     return root;
-  }
-  int helper(TreeNode? root,int sum){
-    if(root==null) return sum;  
-    root.val += helper(root.right,sum);
-    return helper(root.left,root.val);
   }
 }
