@@ -7,9 +7,7 @@ class Solution {
       1000 : ["", "M", "MM", "MMM", "MMMM"],
     };
     String res ='';
-    for(int i =1;i<=1000;i*=10){
-      res = '${map[i]![(num ~/ i)%10]}$res';
-    }
+    for(int i =1;i<=1000;i*=10)res = '${map[i]![(num ~/ i)%10]}$res';
     return res;
   }
 }
