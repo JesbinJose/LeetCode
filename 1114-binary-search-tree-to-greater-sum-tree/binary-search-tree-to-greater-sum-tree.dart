@@ -3,8 +3,7 @@ class Solution {
   TreeNode? bstToGst(TreeNode? root) {
     if (root != null) {
       bstToGst(root!.right);
-      sum += root!.val;
-      root!.val = sum;
+      root!.val = sum += root!.val;
       bstToGst(root!.left);
     }
     return root;
