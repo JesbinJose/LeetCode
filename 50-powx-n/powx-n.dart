@@ -2,8 +2,7 @@ class Solution {
   double myPow(double x, int n) {
     if (n == 0) return 1;
     double res = 1;
-    bool isNegative = n < 0;
-    if (isNegative) {
+    if (n < 0) {
       x = 1 / x;
       n = -n;
     }
