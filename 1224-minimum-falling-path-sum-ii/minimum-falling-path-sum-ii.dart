@@ -8,12 +8,11 @@ class Solution {
       for (int col = 0; col < n; col++) {
         int minSum = dp;
         for (int nextCol = 0; nextCol < n; nextCol++) 
-          if (nextCol != col) 
-            minSum = min(minSum, dpTable[row + 1][nextCol]);
+          if (nextCol != col) minSum = min(minSum, dpTable[row + 1][nextCol]);
         dpTable[row][col] = grid[row][col] + minSum;
       }
-    int minPathSum = dp;
-    for (int i = 0; i < n; i++) minPathSum = min(minPathSum, dpTable[0][i]);
+    int minPathSum = dpTable[0][0];
+    for (int i = 1; i < n; i++) minPathSum = min(minPathSum, dpTable[0][i]);
     return minPathSum;
   }
 }
