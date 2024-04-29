@@ -11,6 +11,6 @@ impl Solution {
             }
             xor_res >>= 1;
         }
-        res 
+        return res;
     }
 }
