@@ -1,24 +1,16 @@
 class Solution {
   int compareVersion(String version1, String version2) {
-    final v1 = version1.split('.').map((e) => int.parse(e)).toList();
-    final v2 = version2.split('.').map((e) => int.parse(e)).toList();
-    final int len,ans;
-    final list;
-    if(v1.length < v2.length){
-        len = v1.length;
-        ans = -1;
-        list = v2;
-    } else {
-        len = v2.length;
-        ans = 1;
-        list = v1;
+    var nums1 = version1.split('.');
+    var nums2 = version2.split('.');
+    var n1 = nums1.length;
+    var n2 = nums2.length;
+    var maxLen = max(n1, n2);
+    for (var i = 0; i < maxLen; i++) {
+      var val1 = i < n1 ? int.parse(nums1[i]) : 0;
+      var val2 = i < n2 ? int.parse(nums2[i]) : 0;
+      if (val1 < val2) return -1;
+      if (val1 > val2) return 1;
     }
-    int i;
-    for(i = 0; i < len; i++){
-        if(v1[i] < v2[i]) return -1;
-        if(v1[i] > v2[i]) return 1; 
-    }
-    for(i; i < list.length; i++) if(list[i] != 0) return ans;
     return 0;
   }
 }
