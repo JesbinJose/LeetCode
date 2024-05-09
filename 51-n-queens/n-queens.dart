@@ -2,6 +2,7 @@ class Solution {
   List<List<String>> solveNQueens(int n) {
     List<List<String>> res = [];
     List<int> temp = List.filled(n,-1);
+    
     bool isValidPos(int col,int row){
       if(temp[col]!=-1)return false;
       int leftDia = row - col;
@@ -10,6 +11,7 @@ class Solution {
         if(e!=-1)if(e+i==rightDia||e-i==leftDia)return false;
       return true;
     }
+
     void solve(int pos){
       if(pos==n){
         List<String> subRes = List.filled(n,'');
