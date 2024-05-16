@@ -4,8 +4,7 @@ class Solution {
     List<String> temp = [];
     void helper(int index){
       if(index==s.length) res.add([...temp]);
-      else
-        for(int i = index ; i < s.length ; i++)
+      else for(int i = index ; i < s.length ; i++)
           if(isPlaidrome(s,index,i)){
             temp.add(s.substring(index,i+1));
             helper(i+1);
