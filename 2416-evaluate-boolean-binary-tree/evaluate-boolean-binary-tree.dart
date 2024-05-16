@@ -11,8 +11,6 @@ class Solution {
   bool evaluateTree(TreeNode? root) {
     if(root==null) return false;
     if(root.val<2) return root.val != 0;
-    if(root.val==2) return evaluateTree(root.left) || evaluateTree(root.right);
-    if(root.val==3) return evaluateTree(root.left) && evaluateTree(root.right);
-    return false;
+    return root.val==2 ? evaluateTree(root.left) || evaluateTree(root.right) : evaluateTree(root.left) && evaluateTree(root.right);
   }
 }
