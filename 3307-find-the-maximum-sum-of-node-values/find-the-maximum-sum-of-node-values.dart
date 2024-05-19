@@ -4,7 +4,7 @@ class Solution {
     for (int n in nums) {
       final int b = n ^ k;
       sum += max(n, b);
-      cnt ^= n < b ? 1 : 0;
+      if(n < b) cnt % 2 == 0 ? cnt++ : cnt--;
       d = min(d, (n - b).abs());
     }
     return sum - d * cnt;
