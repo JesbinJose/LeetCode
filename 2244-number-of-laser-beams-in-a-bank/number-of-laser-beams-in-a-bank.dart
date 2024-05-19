@@ -2,7 +2,7 @@ class Solution {
   int numberOfBeams(List<String> bank) {
     int res = 0;
     int preLazer = 0;
-    for(String row in bank.reversed){
+    for(String row in bank){
       int curLazer = 0;
       for(String i in row.split('')) if(i=='1') curLazer++;
       res += curLazer * preLazer;
