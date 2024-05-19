@@ -3,7 +3,7 @@ impl Solution {
         let mut res: i32 = 0;
         for (i,v) in s.chars().enumerate() {
             if let Some(index) = t.find(v) {
-                res += (i as i32 - index as i32).abs();
+                res += ((i - index)as i32).abs();
             } 
         }
         res
