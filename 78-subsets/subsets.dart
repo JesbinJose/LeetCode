@@ -2,7 +2,7 @@ import 'dart:math';
 
 class Solution {
   List<List<int>> subsets(List<int> nums) {
-    List<List<int>> result = List.generate(pow(2, nums.length) as int, (_) => []);
+    List<List<int>> result = List.filled(pow(2, nums.length) as int, []);
     int index = 1;
     for (int n in nums) {
       int length = index;
