@@ -1,18 +1,18 @@
+import 'dart:math';
+
 class Solution {
   int lengthOfLongestSubstring(String s) {
-    Map<String,int> freq = {};
-    int max = 0, curMax =0;
-    for(int i = 0;i<s.length;i++){
-        if(freq[s[i]]==null){
-            curMax++;
-            freq[s[i]] = i;
-        }else{
-            max = max > curMax ? max : curMax;
-            curMax = 0;
-            i = freq[s[i]]!;
-            freq = {};
-        }
+    Map<String, int> freq = {};
+    int maxLen = 0, start = 0;
+
+    for (int end = 0; end < s.length; end++) {
+      if (freq.containsKey(s[end]) && freq[s[end]]! >= start) {
+        start = freq[s[end]]! + 1;
+      }
+      freq[s[end]] = end;
+      maxLen = max(maxLen, end - start + 1);
     }
-    return max > curMax ? max : curMax;
+
+    return maxLen;
   }
 }
