@@ -4,6 +4,7 @@ class Solution {
   int lengthOfLongestSubstring(String s) {
     List<int> lastIndex = List.filled(95, -1);
     int maxLen = 0, start = 0;
+    if(s.isEmpty) return 0;
 
     for (int end = 0; end < s.length; end++) {
       int index = s.codeUnitAt(end) - 32;
@@ -11,9 +12,9 @@ class Solution {
         start = lastIndex[index] + 1;
       }
       lastIndex[index] = end;
-      maxLen = max(maxLen,end - start + 1);
+      maxLen = max(maxLen,end - start);
     }
 
-    return maxLen;
+    return maxLen + 1;
   }
 }
