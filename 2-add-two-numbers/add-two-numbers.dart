@@ -8,25 +8,24 @@
  */
 class Solution {
   ListNode? addTwoNumbers(ListNode? l1, ListNode? l2) {
-    ListNode list = ListNode(0);
-    ListNode? temp = list;
-    int reminder = 0;
-    void work(){
-        int sum = reminder;
-        sum += l1?.val??0;
-        sum += l2?.val??0;
-        temp!.next = ListNode(sum%10);
+    ListNode? sum= ListNode();
+    ListNode? temp = sum;
+    int rem = 0;
+    while(l1!=null||l2!=null){
+        int curSum = rem;
+        if(l1 != null){
+            curSum += l1.val;
+            l1 = l1.next;
+        }
+        if(l2 != null){
+            curSum += l2.val;
+            l2 = l2.next;
+        }
+        rem = curSum ~/10;
+        temp?.next = ListNode(curSum%10);
         temp = temp?.next;
-        reminder = sum ~/ 10;
     }
-    while (l1!=null||l2!=null){
-        work();
-        l1 = l1?.next;
-        l2 = l2?.next;
-    }
-    if(reminder != 0){
-        temp?.next = ListNode(reminder);
-    }
-    return list.next;
+    if(rem!=0) temp?.next = ListNode(rem);
+    return sum.next;
   }
 }
